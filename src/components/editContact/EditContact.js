@@ -124,8 +124,8 @@ const EditContact = ({history , match}) => {
                             <Button
                                 variant="contained"
                                 type='submit'
-                                // onClick={onSave}
                                 onClick={changeContact}
+                                // onClick={onSave}
                             >
                                 Save changes
                             </Button>

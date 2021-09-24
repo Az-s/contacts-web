@@ -72,6 +72,6 @@ const Modalinfo = ({ show, close, name, phone, email, photo, id, onDelete }) => 
             </Modal>
         </>
     )
-}
+};
 
 export default Modalinfo;

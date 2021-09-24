@@ -44,7 +44,7 @@ const AddContacts = ({history}) => {
 
     const handleClick = () => {
         history.push("/");
-    }
+    };
 
     return (
         <Container maxWidth="lg">

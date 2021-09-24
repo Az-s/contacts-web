@@ -6,6 +6,7 @@ import AddContacts from '../components/addContacts/AddContacts';
 import EditContact from '../components/editContact/EditContact';
 import './App.css';
 
+
 const App = () => {
   return (
     <div className="App">

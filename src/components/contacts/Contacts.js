@@ -95,6 +95,6 @@ const Contacts = ({ mathch, history }) => {
             </Grid>
         </Container>
     )
-}
+};
 
 export default Contacts;
