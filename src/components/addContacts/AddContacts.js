@@ -132,6 +132,6 @@ const AddContacts = ({history}) => {
             </Grid>
         </Container>
     )
-}
+};
 
 export default AddContacts;

@@ -47,7 +47,7 @@ export const fetchContacts = () => {
       dispatch(fetchContactsFailure(e));
     }
   };
-}
+};
 
 export const deleteContacts = (id) => {
   return async dispatch => {
@@ -61,7 +61,7 @@ export const deleteContacts = (id) => {
       dispatch(contactsFailure(e));
     }
   };
-}
+};
 
 export const editContact = (id , editContactData) => {
   return async dispatch => {

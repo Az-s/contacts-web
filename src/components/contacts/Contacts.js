@@ -46,8 +46,8 @@ const Contacts = ({ mathch, history }) => {
             await dispatch(deleteContacts(id));
         } finally {
             history.push('/addContact');
-            // purchaseCancelHandler();
             handleClose();
+            // purchaseCancelHandler();
         }
     };
 

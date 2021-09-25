@@ -135,6 +135,6 @@ const EditContact = ({history , match}) => {
             </Grid>
         </Container>
     )
-}
+};
 
 export default EditContact;

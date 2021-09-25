@@ -23,7 +23,7 @@ const style = {
     pb: 3,
 };
 
-const Modalinfo = ({ show, close, name, phone, email, photo, id, onDelete , data}) => {
+const Modalinfo = ({ show, close, name, phone, email, photo, id, onDelete }) => {
 
     return (
         <>
