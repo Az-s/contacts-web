@@ -11,7 +11,7 @@ function App() {
       <Router>
         <NavBar />
         <Route exact path='/' component={Contacts} />
-        <Route path='/addContact' component={DiAddContactsshes} />
+        <Route path='/addContact' component={AddContacts} />
       </Router>
     </div>
   );

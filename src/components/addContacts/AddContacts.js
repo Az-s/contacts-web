@@ -1,10 +1,135 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Container, Grid, Card, Box, Typography, TextField, CardMedia, Stack, Button, Paper} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import {useDispatch, useSelector} from "react-redux";
+import actionsAddContact from '../../store/actions/actionsAddContact'
 
-const AddContacts = () => {
+const Item = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
+
+const AddContacts = ({history}) => {
+    const dispatch = useDispatch();
+
+    const [customer, setCustomer] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        photo: '',
+    });
+
+    const onInputChange = e => {
+        const { name, value } = e.target;
+
+        setCustomer(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const createOrder = async e => {
+        e.preventDefault();
+
+        try {
+            await dispatch(actionsAddContact({ customer }));
+            history.push('/');
+        } catch (e) {
+            console.log('error happened');
+        }
+    };
+
+    const handleClick = () => {
+        history.push("/");
+    }
+
     return (
-        <div>
-            
-        </div>
+        <Container maxWidth="lg">
+            <Grid
+                container
+                justifyContent="center"
+                alignItems="center"
+            >
+                <Card sx={{ display: 'flex', width: '100%', marginTop: '2rem' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                        <Typography component="div" variant="h5" sx={{ display: 'flex', justifyContent: 'center' }}>
+                            Add new contact:
+                        </Typography>
+                        <Stack
+                            sx={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
+                        >
+                            <Box component="div" variant="h6" mt={2}>
+                                <TextField
+                                    id="outlined-basic"
+                                    label="Name"
+                                    type="text"
+                                    name='name'
+                                    value={customer.name}
+                                    onChange={onInputChange}
+                                    variant="outlined" />
+                            </Box>
+                            <Box component="div" variant="h6" mt={2}>
+                                <TextField
+                                    id="outlined-basic"
+                                    label="Phone"
+                                    type="text"
+                                    name='phone'
+                                    value={customer.phone}
+                                    onChange={onInputChange}
+                                    variant="outlined" />
+                            </Box>
+                            <Box component="div" variant="h6" mt={2}>
+                                <TextField
+                                    id="outlined-basic"
+                                    label="Email"
+                                    type="email"
+                                    name='email'
+                                    value={customer.email}
+                                    onChange={onInputChange}
+                                    variant="outlined" />
+                            </Box>
+                            <Box component="div" variant="h6" mt={2}>
+                                <TextField
+                                    id="outlined-basic"
+                                    label="Photo"
+                                    type="text"
+                                    name='photo'
+                                    value={customer.photo}
+                                    onChange={onInputChange}
+                                    variant="outlined" />
+                            </Box>
+                            <Item component="div" variant="h6" mt={2}>
+                                Photo preview:
+                                <CardMedia
+                                    component="img"
+                                    sx={{ width: 150 }}
+                                    image={customer.photo ? customer.photo : 'https://mediscan.kz/images/user.png'}
+                                    alt="no img"
+                                />
+                            </Item>
+                        </Stack>
+                        <Stack spacing={2} direction="row" m={2}>
+                            <Button
+                                variant="contained"
+                                type='submit'
+                                onSubmit={createOrder}
+                            >
+                                Save
+                            </Button>
+                            <Button
+                                variant="contained"
+                                type='button'
+                                onClick={handleClick}
+                            >
+                                Back to contacts
+                            </Button>
+                        </Stack>
+                    </Box>
+                </Card>
+            </Grid>
+        </Container>
     )
 }
 
