@@ -124,7 +124,7 @@ const AddContacts = ({history}) => {
                                 type='button'
                                 onClick={handleClick}
                             >
-                                Back to contacts
+                                Back to Contacts
                             </Button>
                         </Stack>
                     </Box>

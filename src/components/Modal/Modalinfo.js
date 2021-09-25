@@ -3,9 +3,9 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { Stack, CardMedia } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 import AddIcCallIcon from '@material-ui/icons/AddIcCall';
 import EmailIcon from '@material-ui/icons/Email';
-import { NavLink } from 'react-router-dom';
 import './Modalinfo.css';
 
 const style = {

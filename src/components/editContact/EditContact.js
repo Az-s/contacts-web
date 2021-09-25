@@ -47,6 +47,7 @@ const EditContact = ({history , match}) => {
 
     const changeContact = async (e) => {
         e.preventDefault();
+        
         try {
             await dispatch(editContact(match.params.id ,{ ...customer }));
             history.push('/');

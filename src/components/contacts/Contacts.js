@@ -11,7 +11,6 @@ import Modalinfo from '../Modal/Modalinfo';
 // import { setModalOpen } from '../../store/actions/actionsContacts';
 import './Contacts.css';
 
-
 const Contacts = ({ mathch, history }) => {
     const dispatch = useDispatch();
 
