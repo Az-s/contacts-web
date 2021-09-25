@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Grid, Card, Box, Typography, TextField, CardMedia, Stack, Button, Paper} from '@mui/material';
 import { styled } from '@mui/material/styles';
-import {useDispatch, useSelector} from "react-redux";
-import actionsAddContact from '../../store/actions/actionsAddContact'
+import { useDispatch, useSelector } from "react-redux";
+import { createContact } from '../../store/actions/actionsAddContact';
+
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -34,7 +35,7 @@ const AddContacts = ({history}) => {
         e.preventDefault();
 
         try {
-            await dispatch(actionsAddContact({ customer }));
+            await dispatch(createContact({ ...customer }));
             history.push('/');
         } catch (e) {
             console.log('error happened');
@@ -44,6 +45,8 @@ const AddContacts = ({history}) => {
     const handleClick = () => {
         history.push("/");
     }
+
+    console.log(customer);
 
     return (
         <Container maxWidth="lg">
@@ -114,7 +117,7 @@ const AddContacts = ({history}) => {
                             <Button
                                 variant="contained"
                                 type='submit'
-                                onSubmit={createOrder}
+                                onClick={createOrder}
                             >
                                 Save
                             </Button>
