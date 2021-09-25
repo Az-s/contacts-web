@@ -1,10 +1,9 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import { Container, Grid, Card, Box, Typography, TextField, CardMedia, Stack, Button, Paper} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useDispatch } from "react-redux";
-import { createContact } from '../../store/actions/actionsAddContact';
-
-
+import { editContact } from '../../store/actions/actionsAddContact';
+import axiosApi from '../../axiosApi';
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -13,7 +12,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
   }));
 
-const EditContact = ({history}) => {
+const EditContact = ({history , match}) => {
     const dispatch = useDispatch();
 
     const [customer, setCustomer] = useState({
@@ -22,6 +21,14 @@ const EditContact = ({history}) => {
         email: '',
         photo: '',
     });
+
+    useEffect(() => {   
+        const fetchContact = async () => {
+            const response = await axiosApi.get('contacts/' + match.params.id + '.json');
+            setCustomer(response.data);
+        }
+        fetchContact().catch(console.error);
+    }, [match.params.id]);
 
     const onInputChange = e => {
         const { name, value } = e.target;
@@ -32,11 +39,16 @@ const EditContact = ({history}) => {
         }));
     };
 
-    const createOrder = async e => {
-        e.preventDefault();
+    // const onSave = async e => {
+    //     e.preventDefault();
+    //     await axiosApi.put('contacts/' + match.params.id + '.json' , {...customer});
+    //     history.push('/');
+    // };
 
+    const changeContact = async (e) => {
+        e.preventDefault();
         try {
-            await dispatch(createContact({ ...customer }));
+            await dispatch(editContact(match.params.id ,{ ...customer }));
             history.push('/');
         } catch (e) {
             console.log('error happened');
@@ -112,7 +124,8 @@ const EditContact = ({history}) => {
                             <Button
                                 variant="contained"
                                 type='submit'
-                                onClick={createOrder}
+                                // onClick={onSave}
+                                onClick={changeContact}
                             >
                                 Save changes
                             </Button>

@@ -13,7 +13,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   items: reducerContacts,
-  addContatc: reducerAddContact,
+  addContact: reducerAddContact,
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));

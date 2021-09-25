@@ -23,7 +23,7 @@ const style = {
     pb: 3,
 };
 
-const Modalinfo = ({ show, close, name, phone, email, photo, id, }) => {
+const Modalinfo = ({ show, close, name, phone, email, photo, id, onDelete }) => {
 
     return (
         <>
@@ -31,7 +31,7 @@ const Modalinfo = ({ show, close, name, phone, email, photo, id, }) => {
                 hideBackdrop
                 open={show}
                 onClose={close}
-                key={id}
+                id={id}
             >
                 <Box sx={{ ...style, width: 400 }}>
                     <Button onClick={close} sx={{ float: 'right' }}>&#10006;</Button>
@@ -56,7 +56,6 @@ const Modalinfo = ({ show, close, name, phone, email, photo, id, }) => {
                         <NavLink to={'/' + id + '/edit'}>
                             <Button
                                 variant="contained"
-                                type='submit'
                             >
                                 Edit
                             </Button>
@@ -64,7 +63,7 @@ const Modalinfo = ({ show, close, name, phone, email, photo, id, }) => {
                         <Button
                             variant="contained"
                             type='button'
-                        // onClick={() => deleteContact(id)}>
+                            onClick={onDelete}
                         >
                             Delete
                         </Button>
