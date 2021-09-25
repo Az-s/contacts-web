@@ -63,7 +63,7 @@ export const deleteContacts = (id) => {
   };
 };
 
-export const editContact = (id , editContactData) => {
+export const editContact = ( id , editContactData ) => {
   return async dispatch => {
     try {
       dispatch(contactsRequest());
