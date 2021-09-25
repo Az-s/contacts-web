@@ -8,9 +8,13 @@ export const FETCH_CONTACTS_REQUEST = 'FETCH_CONTACTS_REQUEST';
 export const FETCH_CONTACTS_SUCCESS = 'FETCH_CONTACTS_SUCCESS';
 export const FETCH_CONTACTS_FAILURE = 'FETCH_CONTACTS_FAILURE';
 
+export const CONTACTS_DELETE = 'CONTACTS_DELETE';
+
 export const contactsRequest = () => ({type: CONTACTS_REQUEST});
 export const contactsSuccess = () => ({type: CONTACTS_SUCCESS});
 export const contactsFailure = error => ({type: CONTACTS_FAILURE, payload: error});
+
+export const deleteContacts = (id) => ({type: CONTACTS_DELETE , id});
 
 export const fetchContactsRequest = () => ({type: FETCH_CONTACTS_REQUEST});
 export const fetchContactsSuccess = contact => ({type: FETCH_CONTACTS_SUCCESS, payload: contact});
@@ -41,6 +45,21 @@ export const createContact = (contactData) => {
         }));
         
         dispatch(fetchContactsSuccess(contacts));
+      } catch (e) {
+        dispatch(fetchContactsFailure(e));
+      }
+    };
+  }
+
+  export const fetchDeleteContacts = (id) => {
+    return async dispatch => {
+      try {
+        dispatch(deleteContacts(id));
+        dispatch(fetchContactsRequest());
+        
+        await axiosApi.delete('contacts/' + id + '.json');
+        dispatch(fetchContactsSuccess());
+        
       } catch (e) {
         dispatch(fetchContactsFailure(e));
       }

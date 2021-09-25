@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { Stack, CardMedia } from '@mui/material';
 import AddIcCallIcon from '@material-ui/icons/AddIcCall';
 import EmailIcon from '@material-ui/icons/Email';
+import { NavLink } from 'react-router-dom';
 import './Modalinfo.css';
 
 const style = {
@@ -22,7 +23,7 @@ const style = {
     pb: 3,
 };
 
-const Modalinfo = ({ show, close, name, phone, email, photo, key }) => {
+const Modalinfo = ({ show, close, name, phone, email, photo, id, }) => {
 
     return (
         <>
@@ -30,8 +31,7 @@ const Modalinfo = ({ show, close, name, phone, email, photo, key }) => {
                 hideBackdrop
                 open={show}
                 onClose={close}
-                aria-labelledby="child-modal-title"
-                aria-describedby="child-modal-description"
+                key={id}
             >
                 <Box sx={{ ...style, width: 400 }}>
                     <Button onClick={close} sx={{ float: 'right' }}>&#10006;</Button>
@@ -43,25 +43,28 @@ const Modalinfo = ({ show, close, name, phone, email, photo, key }) => {
                             alt={name}
                         />
                         <div className='contactInfo'>
-                            <h2 id="child-modal-title">{name}</h2>
-                            <p id="child-modal-description">
+                            <h2>{name}</h2>
+                            <p>
                                 <AddIcCallIcon /> {phone}
                             </p>
-                            <p id="child-modal-description">
+                            <p>
                                 <EmailIcon /> {email}
                             </p>
                         </div>
                     </div>
                     <Stack spacing={2} direction="row" mt={2} justifyContent='center'>
-                        <Button
-                            variant="contained"
-                            type='submit'
-                        >
-                            Edit
-                        </Button>
+                        <NavLink to={'/' + id + '/edit'}>
+                            <Button
+                                variant="contained"
+                                type='submit'
+                            >
+                                Edit
+                            </Button>
+                        </NavLink>
                         <Button
                             variant="contained"
                             type='button'
+                        // onClick={() => deleteContact(id)}>
                         >
                             Delete
                         </Button>

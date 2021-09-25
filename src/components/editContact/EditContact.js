@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React , {useState} from 'react';
 import { Container, Grid, Card, Box, Typography, TextField, CardMedia, Stack, Button, Paper} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useDispatch } from "react-redux";
 import { createContact } from '../../store/actions/actionsAddContact';
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -12,7 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
   }));
 
-const AddContacts = ({history}) => {
+const EditContact = ({history}) => {
     const dispatch = useDispatch();
 
     const [customer, setCustomer] = useState({
@@ -42,10 +43,6 @@ const AddContacts = ({history}) => {
         }
     };
 
-    const handleClick = () => {
-        history.push("/");
-    }
-
     return (
         <Container maxWidth="lg">
             <Grid
@@ -53,7 +50,7 @@ const AddContacts = ({history}) => {
                 justifyContent="center"
                 alignItems="center"
             >
-                <Card sx={{ display: 'flex', width: '100%', marginTop: '2rem' }}>
+                <Card sx={{ display: 'flex', width: '100%', marginTop: '2rem' , paddingLeft: '2rem'}}>
                     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                         <Typography component="div" variant="h5" sx={{ display: 'flex', justifyContent: 'center' }}>
                             Add new contact:
@@ -117,14 +114,7 @@ const AddContacts = ({history}) => {
                                 type='submit'
                                 onClick={createOrder}
                             >
-                                Save
-                            </Button>
-                            <Button
-                                variant="contained"
-                                type='button'
-                                onClick={handleClick}
-                            >
-                                Back to contacts
+                                Save changes
                             </Button>
                         </Stack>
                     </Box>
@@ -134,4 +124,4 @@ const AddContacts = ({history}) => {
     )
 }
 
-export default AddContacts;
+export default EditContact;

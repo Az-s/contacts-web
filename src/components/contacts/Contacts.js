@@ -43,13 +43,13 @@ const Contacts = () => {
                         <Modalinfo
                             show={showPurchaseModal}
                             close={purchaseCancelHandler}
-                            key={c.id}
+                            id={c.id}
                             name={c.name}
                             phone={c.phone}
                             email={c.email}
                             photo={c.photo}
                         />
-                        <Card sx={{ display: 'flex', width: '40%', margin: '1rem' }} className='cards' onClick={purchaseHandler}>
+                        <Card sx={{ display: 'flex', width: '40%', margin: '1rem' }} className='cards' onClick={purchaseHandler} key={c.id}>
                             <CardMedia
                                 component="img"
                                 sx={{ width: 150 }}
