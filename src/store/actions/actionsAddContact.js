@@ -29,15 +29,20 @@ export const createContact = (contactData) => {
     }
   };
   
-//   export const fetchContacts = () => {
-//     return async dispatch => {
-//       try {
-//         dispatch(fetchContactsRequest());
-//         const response = await axiosApi.get('/orders.json');
-//         const orders = normalizeOrders(response.data);
-//         dispatch(fetchContactsSuccess(orders));
-//       } catch (e) {
-//         dispatch(fetchContactsFailure(e));
-//       }
-//     };
-//   }
+  export const fetchContacts = () => {
+    return async dispatch => {
+      try {
+        dispatch(fetchContactsRequest());
+        const response = await axiosApi.get('contacts.json');
+        
+        const contacts = Object.keys(response.data).map(id => ({
+            ...response.data[id],
+            id
+        }));
+        
+        dispatch(fetchContactsSuccess(contacts));
+      } catch (e) {
+        dispatch(fetchContactsFailure(e));
+      }
+    };
+  }

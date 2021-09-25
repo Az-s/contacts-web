@@ -5,7 +5,7 @@ import Contacts from '../components/contacts/Contacts';
 import AddContacts from '../components/addContacts/AddContacts';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Router>

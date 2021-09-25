@@ -46,8 +46,6 @@ const AddContacts = ({history}) => {
         history.push("/");
     }
 
-    console.log(customer);
-
     return (
         <Container maxWidth="lg">
             <Grid

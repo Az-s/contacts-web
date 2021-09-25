@@ -1,0 +1,18 @@
+.contactCard{
+    display: flex;
+    flex-direction: space-between;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.contactInfo p {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}

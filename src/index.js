@@ -12,7 +12,7 @@ import './index.css';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  contacts: reducerContacts,
+  items: reducerContacts,
   addContatc: reducerAddContact,
 });
 
